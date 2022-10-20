@@ -4,7 +4,7 @@ import 'package:store_app_with_api/models/products_model.dart';
 import 'package:store_app_with_api/widgets/feed_widget.dart';
 
 class FeedsGridWidget extends StatelessWidget {
-  FeedsGridWidget({
+  const FeedsGridWidget({
     Key? key,
     required this.productList,
     //required this.productList,
@@ -17,12 +17,12 @@ class FeedsGridWidget extends StatelessWidget {
     return GridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 3,
+      itemCount: 4,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 10.0,
         mainAxisSpacing: 10.0,
-        childAspectRatio: 0.6,
+        childAspectRatio: 0.65,
       ),
       itemBuilder: (context, index) {
         return ChangeNotifierProvider.value(
