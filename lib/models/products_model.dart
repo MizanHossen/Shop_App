@@ -23,7 +23,7 @@ class ProductsModel with ChangeNotifier {
     price = json['price'];
     description = json['description'];
     category = json['category'] != null
-        ? new CategoryModel.fromJson(json['category'])
+        ? CategoryModel.fromJson(json['category'])
         : null;
     images = json['images'].cast<String>();
   }

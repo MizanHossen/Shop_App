@@ -4,10 +4,9 @@ import 'package:store_app_with_api/widgets/feed_widget.dart';
 
 import '../api_services/api_handler.dart';
 import '../models/products_model.dart';
-import 'package:http/http.dart' as http;
 
 class FeedScreen extends StatefulWidget {
-  FeedScreen({super.key});
+  const FeedScreen({super.key});
 
   @override
   State<FeedScreen> createState() => _FeedScreenState();
@@ -41,7 +40,7 @@ class _FeedScreenState extends State<FeedScreen> {
         // ),
       ),
       body: productList.isEmpty
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : GridView.builder(
