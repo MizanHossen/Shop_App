@@ -60,7 +60,7 @@ class FeedsWidget extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: FancyShimmerImage(
@@ -82,7 +82,7 @@ class FeedsWidget extends StatelessWidget {
                 productsModelProvider.title.toString(),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 17,
                   //  fontFamily: 'Roboto',
                   fontWeight: FontWeight.w700,

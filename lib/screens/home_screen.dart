@@ -10,7 +10,7 @@ import 'package:store_app_with_api/models/products_model.dart';
 import 'package:store_app_with_api/screens/category_screen.dart';
 import 'package:store_app_with_api/screens/feed_screen.dart';
 import 'package:store_app_with_api/screens/users_screen.dart';
-import 'package:store_app_with_api/widgets/feed_grid_widget.dart';
+import 'package:store_app_with_api/widgets/feed_grid.dart';
 import 'package:store_app_with_api/widgets/feed_widget.dart';
 import 'package:store_app_with_api/widgets/sale_widget.dart';
 import '../widgets/app_bar_icons.dart';
@@ -151,26 +151,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       FutureBuilder<List<ProductsModel>>(
-                          future: APIHandler.getAllProductApi(),
-                          builder: ((context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            } else if (snapshot.hasError) {
-                              return Center(
-                                child: Text("an error ${snapshot.error}"),
-                              );
-                            } else if (snapshot.data == null) {
-                              return const Center(
-                                child: Text("no product"),
-                              );
-                            }
-                            return FeedsGridWidget(
-                              productList: snapshot.data!,
+                        future: APIHandler.getAllProductApi(),
+                        builder: ((context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
                             );
-                          }))
+                          } else if (snapshot.hasError) {
+                            return Center(
+                              child: Text("An error ${snapshot.error}"),
+                            );
+                          } else if (snapshot.data == null) {
+                            return const Center(
+                              child: Text("No products"),
+                            );
+                          }
+                          return FeedsGridWidget(
+                            productList: snapshot.data!,
+                          );
+                        }),
+                      ),
                     ],
                   ),
                 ),

@@ -1,4 +1,6 @@
-class CategoryModel {
+import 'package:flutter/cupertino.dart';
+
+class CategoryModel with ChangeNotifier {
   int? id;
   String? name;
   String? image;
@@ -9,6 +11,13 @@ class CategoryModel {
     id = json['id'];
     name = json['name'];
     image = json['image'];
+  }
+
+  static List<CategoryModel> categoriesFromSnapshot(List categoriesSnapshot) {
+    //print("data ${categoriesSnapshot[0]}");
+    return categoriesSnapshot.map((data) {
+      return CategoryModel.fromJson(data);
+    }).toList();
   }
 
   // Map<String, dynamic> toJson() {
