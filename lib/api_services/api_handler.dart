@@ -5,6 +5,7 @@ import 'package:store_app_with_api/consts/api_const.dart';
 import 'package:store_app_with_api/models/category_model.dart';
 
 import 'package:store_app_with_api/models/products_model.dart';
+import 'package:store_app_with_api/models/users_model.dart';
 
 class APIHandler {
   //static List<ProductModel> productList = [];
@@ -32,13 +33,18 @@ class APIHandler {
     return ProductsModel.productsFromSnapshot(temp);
   }
 
-  //Category
-
-  //https://api.escuelajs.co/api/v1/categories
+  //Category = https://api.escuelajs.co/api/v1/categories
 
   static Future<List<CategoryModel>> getAllCategories() async {
     List temp = await getData(target: "categories");
     return CategoryModel.categoriesFromSnapshot(temp);
+  }
+
+  //Users = https://api.escuelajs.co/api/v1/users
+
+  static Future<List<UsersModel>> getAllUsers() async {
+    List temp = await getData(target: "users");
+    return UsersModel.usersFromSnapshot(temp);
   }
 }
 

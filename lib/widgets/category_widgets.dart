@@ -14,7 +14,7 @@ class CategoryWidgets extends StatelessWidget {
         Provider.of<CategoryModel>(context);
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: Stack(
         children: [
           ClipRRect(
