@@ -151,12 +151,15 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       FutureBuilder<List<ProductsModel>>(
-                        future: APIHandler.getAllProductApi(),
+                        future:
+                            APIHandler.getAllProductApi(limit: 4.toString()),
                         builder: ((context, snapshot) {
                           if (snapshot.connectionState ==
                               ConnectionState.waiting) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
+                            return Center(
+                              child: CircularProgressIndicator(
+                                color: lightIconsColor,
+                              ),
                             );
                           } else if (snapshot.hasError) {
                             return Center(

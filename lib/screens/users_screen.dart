@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:store_app_with_api/models/users_model.dart';
 
 import '../api_services/api_handler.dart';
+import '../consts/global_constants.dart';
 import '../widgets/users_widgets.dart';
 
 class UsersScreen extends StatelessWidget {
@@ -16,8 +17,10 @@ class UsersScreen extends StatelessWidget {
         future: APIHandler.getAllUsers(),
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Center(
+              child: CircularProgressIndicator(
+                color: lightIconsColor,
+              ),
             );
           } else if (snapshot.hasError) {
             Center(

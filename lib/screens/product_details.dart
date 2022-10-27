@@ -49,8 +49,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: Text("An error occured $errorStr"),
               )
             : productsModel == null
-                ? const Center(
-                    child: CircularProgressIndicator(),
+                ? Center(
+                    child: CircularProgressIndicator(
+                      color: lightIconsColor,
+                    ),
                   )
                 : SingleChildScrollView(
                     child: Column(

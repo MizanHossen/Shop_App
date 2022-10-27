@@ -4,6 +4,7 @@ import 'package:store_app_with_api/models/category_model.dart';
 import 'package:store_app_with_api/widgets/category_widgets.dart';
 
 import '../api_services/api_handler.dart';
+import '../consts/global_constants.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -22,8 +23,10 @@ class CategoryScreen extends StatelessWidget {
         future: APIHandler.getAllCategories(),
         builder: ((context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Center(
+              child: CircularProgressIndicator(
+                color: lightIconsColor,
+              ),
             );
           } else if (snapshot.hasError) {
             return Center(
