@@ -142,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     context,
                                     PageTransition(
                                       type: PageTransitionType.fade,
-                                      child: FeedScreen(),
+                                      child: const FeedScreen(),
                                     ),
                                   );
                                 },

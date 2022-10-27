@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:store_app_with_api/consts/api_const.dart';
@@ -11,19 +12,28 @@ class APIHandler {
   //static List<ProductModel> productList = [];
 
   static Future<List<dynamic>> getData({required String target}) async {
-    var uri = Uri.https(BASE_URL, "api/v1/$target");
-    var response = await http.get(uri);
+    try {
+      var uri = Uri.https(BASE_URL, "api/v1/$target");
+      var response = await http.get(uri);
 
-    //print("response ${jsonDecode(response.body)}");
+      //print("response ${jsonDecode(response.body)}");
 
-    var data = jsonDecode(response.body);
+      var data = jsonDecode(response.body);
 
-    List tempList = [];
+      List tempList = [];
 
-    for (var v in data) {
-      tempList.add(v);
+      if (response.statusCode != 200) {
+        throw data["message"];
+      }
+
+      for (var v in data) {
+        tempList.add(v);
+      }
+      return tempList;
+    } catch (error) {
+      log("An error occured $error");
+      throw error.toString();
     }
-    return tempList;
   }
 
   //products
@@ -50,16 +60,25 @@ class APIHandler {
   //single product
 
   static Future<ProductsModel> getProductById({required String id}) async {
-    var uri = Uri.https(BASE_URL, "api/v1/products/$id");
-    var response = await http.get(uri);
+    try {
+      var uri = Uri.https(BASE_URL, "api/v1/products/$id");
+      var response = await http.get(uri);
 
-    //print("response ${jsonDecode(response.body)}");
+      //print("response ${jsonDecode(response.body)}");
 
-    var data = jsonDecode(response.body);
+      var data = jsonDecode(response.body);
 
-    // List tempList = [];
+      if (response.statusCode != 200) {
+        throw data["message"];
+      }
 
-    return ProductsModel.fromJson(data);
+      // List tempList = [];
+
+      return ProductsModel.fromJson(data);
+    } catch (error) {
+      log("an error occured while getting product info $error");
+      throw error.toString();
+    }
   }
 }
 

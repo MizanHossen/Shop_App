@@ -27,15 +27,15 @@ class SaleWidget extends StatelessWidget {
           Flexible(
             flex: 2,
             child: Padding(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               child: Container(
                 height: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xff9689ce),
+                  color: const Color(0xff9689ce),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +53,7 @@ class SaleWidget extends StatelessWidget {
                         child: FittedBox(
                           fit: BoxFit.fill,
                           child: Text(
-                            "50%\nOFF",
+                            "40%\nOFF",
                             style: TextStyle(color: Colors.white),
                           ),
                         ),
